@@ -15,11 +15,8 @@ exports.onCreateWebpackConfig = ({ getConfig, stage, actions }) => {
       loader,
       options: {},
     }
-    cssModulesRule.use.splice(
-      cssModulesRule.use.findIndex(isStyleLoader) + 1,
-      0,
-      cssModulesFlowTypesLoader
-    )
+    const insertIndex = cssModulesRule.use.findIndex(isStyleLoader) + 1
+    cssModulesRule.use.splice(insertIndex, 0, cssModulesFlowTypesLoader)
     actions.replaceWebpackConfig(config)
   }
 }
