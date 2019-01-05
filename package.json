@@ -1,6 +1,6 @@
 {
   "name": "gatsby-plugin-css-modules-flow-types",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Create Flow types for CSS Modules in Gatsby",
   "main": "index.js",
   "repository": "https://github.com/silvenon",
