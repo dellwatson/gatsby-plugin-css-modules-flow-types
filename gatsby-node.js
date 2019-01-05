@@ -1,7 +1,7 @@
 const isCssModulesRule = ({ test }) => test.source.includes('\\.module\\.css')
 const isCssRules = ({ oneOf }) =>
   Array.isArray(oneOf) && oneOf.some(isCssModulesRule)
-const isStyleLoader = ({ loader }) => /\bstyle-loader\b/.test(loader)
+const isCssLoader = ({ loader }) => /\bcss-loader\b/.test(loader)
 
 const loader = require.resolve('css-modules-flow-types-loader')
 
@@ -15,7 +15,7 @@ exports.onCreateWebpackConfig = ({ getConfig, stage, actions }) => {
       loader,
       options: {},
     }
-    const insertIndex = cssModulesRule.use.findIndex(isStyleLoader) + 1
+    const insertIndex = cssModulesRule.use.findIndex(isCssLoader)
     cssModulesRule.use.splice(insertIndex, 0, cssModulesFlowTypesLoader)
     actions.replaceWebpackConfig(config)
   }
